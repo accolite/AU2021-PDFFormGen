@@ -1,0 +1,64 @@
+{
+    "form":[
+        {
+            "field":{
+                field-type:"",
+               
+                label:"",
+
+                singleInputoption:"",
+
+                forLists:[],
+
+                validations:{
+
+                    Required: "",
+
+                    Max length:"",
+
+                    Min length:"",
+
+                    pattern: ""
+
+                }
+
+                fieldGroup:""
+            }
+        },
+
+    ]
+}
+
+
+{
+    "form":[
+        {
+            "field":{
+                field-type:"",
+               
+                label:"",
+
+                singleInputoption:"",
+
+                forLists:[],
+
+                validations:{
+
+                    Required: "",
+
+                    Max length:"",
+
+                    Min length:"",
+
+                    pattern: ""
+
+                }
+
+                fieldGroup:""
+            }
+        },
+
+    ]
+}
+
+
