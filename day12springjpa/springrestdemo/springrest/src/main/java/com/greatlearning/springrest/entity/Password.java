@@ -1,52 +1,48 @@
 package com.greatlearning.springrest.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "num")
-public class Num {
-
+public class Password {
 	@Id
 	@GeneratedValue(generator = "increment")
 	@Column(name = "id")
 	private long id;
-	
-	private int value;
-	private int is_required;
-	private int max_length;
-	private int min_length;
-	@ManyToOne
-	@JoinColumn(name="fg_id")
-	private FieldGroup FG;
-public Num() {
-		
-	}
-	@ManyToOne
-	@JoinColumn(name="formid")
-	private Form FID;
-	
-	public Num(int value, int is_required, int max_length, int min_length) {
-		this.value = value;
-		this.is_required = is_required;
-		this.max_length = max_length;
-		this.min_length = min_length;
-	}
+	private String value;
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public int getValue() {
+	private int is_required;
+	private int max_length;
+	private int min_length;
+	@ManyToOne
+	@JoinColumn(name="fg_id")
+	private FieldGroup FG;
+
+	@ManyToOne
+	@JoinColumn(name="formid")
+	private Form FID;
+	
+	public Password() {
+		
+	}
+	
+	public Password(String value, int is_required, int max_length, int min_length) {
+		this.value = value;
+		this.is_required = is_required;
+		this.max_length = max_length;
+		this.min_length = min_length;
+	}
+	public String getValue() {
 		return value;
 	}
-	public void setValue(int value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	public int getIs_required() {
@@ -73,6 +69,4 @@ public Num() {
 	public void setFG(FieldGroup fG) {
 		FG = fG;
 	}
-	
-	
 }

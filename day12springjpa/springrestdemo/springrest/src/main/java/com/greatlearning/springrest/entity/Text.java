@@ -30,6 +30,10 @@ public class Text  {
 	@JoinColumn(name="fg_id")
 	private FieldGroup FG;
 
+	@ManyToOne
+	@JoinColumn(name="formid")
+	private Form FID;
+	
 	public Text() {
 		
 	}

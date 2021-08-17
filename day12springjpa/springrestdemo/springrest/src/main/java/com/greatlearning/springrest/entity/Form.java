@@ -1,9 +1,7 @@
 package com.greatlearning.springrest.entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,11 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "fieldgroup")
-public class FieldGroup 
-{
+@Table(name = "form")
+public class Form {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
 	@Column(name ="id")
@@ -27,24 +24,24 @@ public class FieldGroup
 	
 	private String name;
 	
-	public FieldGroup() {
+	public Form() {
 		
 	}
 	
-	public FieldGroup(String name) {
+	public Form(String name) {
 		this.name = name;
 	}
 	
-	@OneToMany(mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Num> FTnum = new ArrayList<>();
 
-	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Text>  FTtext = new ArrayList<>();
 
-	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Email>  FTemail = new ArrayList<>();
 	
-	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Email>  FTcheckboxlist = new ArrayList<>();
 	
 	public long getId() {
@@ -81,9 +78,6 @@ public class FieldGroup
 
 	@Override
 	public String toString() {
-		return "FieldGroup [id=" + id + ", name=" + name + "]";
+		return "Form [id=" + id + ", name=" + name + "]";
 	}
-	
-	
-	
 }
