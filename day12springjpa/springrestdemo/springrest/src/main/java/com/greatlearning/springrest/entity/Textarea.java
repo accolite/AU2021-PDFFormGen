@@ -38,9 +38,11 @@ public class Textarea  {
 		
 	}
 	
-	public Textarea(String text, int is_required) {
+	public Textarea(String text, int is_required, int max_length, int min_length) {
 		this.text = text;
 		this.is_required = is_required;
+		this.max_length = max_length;
+		this.min_length = min_length;
 	}
 	public String getText() {
 		return text;
