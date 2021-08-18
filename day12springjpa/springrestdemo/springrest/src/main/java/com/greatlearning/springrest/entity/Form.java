@@ -81,9 +81,13 @@ public class Form {
 			)
 
 	private List<Text>  FTtext = new ArrayList<>();
-
-//	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private List<Email>  FTemail = new ArrayList<>();
+	
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	private List<Email>  FTemail = new ArrayList<>();
 	
 //	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@ManyToMany(fetch = FetchType.LAZY,
@@ -91,10 +95,6 @@ public class Form {
 					CascadeType.PERSIST,
 					CascadeType.MERGE
 			})
-	@JoinTable(name = "checkboxlist_text",
-			joinColumns = { @JoinColumn(name = "form_id") },
-			inverseJoinColumns = { @JoinColumn(name = "cbl_id") }
-			)
 	private List<CheckBoxList>  FTcheckboxlist = new ArrayList<>();
 	
 	public long getId() {

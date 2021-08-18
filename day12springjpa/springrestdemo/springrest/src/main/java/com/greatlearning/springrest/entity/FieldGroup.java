@@ -19,6 +19,18 @@ import javax.persistence.Table;
 public class FieldGroup 
 {
 	
+	public List<CheckBoxList> getFTcheckboxlist() {
+		return FTcheckboxlist;
+	}
+
+	public void setFTcheckboxlist(List<CheckBoxList> fTcheckboxlist) {
+		FTcheckboxlist = fTcheckboxlist;
+	}
+
+	public void setFTtext(List<Text> fTtext) {
+		FTtext = fTtext;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
 	@Column(name ="id")
@@ -40,11 +52,11 @@ public class FieldGroup
 	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Text>  FTtext = new ArrayList<>();
 
-//	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private List<Email>  FTemail = new ArrayList<>();
+	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Email>  FTemail = new ArrayList<>();
 	
-//	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private List<CheckBoxList>  FTcheckboxlist = new ArrayList<>();
+	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<CheckBoxList>  FTcheckboxlist = new ArrayList<>();
 	
 	public long getId() {
 		return id;

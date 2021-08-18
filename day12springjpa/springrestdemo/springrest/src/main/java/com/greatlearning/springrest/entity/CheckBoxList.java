@@ -17,11 +17,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "checkboxlist")
 public class CheckBoxList {
+	public List<Form> getFormlist() {
+		return formlist;
+	}
+
+	public void setFormlist(List<Form> formlist) {
+		this.formlist = formlist;
+	}
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@Column(name = "id")
 	private long id;
 	String value;
+	int is_required;
 	@OneToMany(mappedBy = "CB", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<BoxItem> boxItems = new ArrayList<>();
 	
@@ -70,5 +79,12 @@ public class CheckBoxList {
 		FG = fG;
 	}
 	
+	public CheckBoxList() {
+		
+	}
+	
+	public CheckBoxList(String value,int is_required) {
+		
+	}
 	
 }
