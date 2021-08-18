@@ -16,7 +16,7 @@ public class DateTime  {
 	@GeneratedValue(generator = "increment")
 	@Column(name = "id")
 	private long id;
-	private String value;
+	private String Datetime;
 	public long getId() {
 		return id;
 	}
@@ -36,15 +36,15 @@ public class DateTime  {
 		
 	}
 	
-	public Text(String value, int is_required) {
-		this.value = value;
+	public Text(String Datetime, int is_required) {
+		this.Datetime = Datetime;
 		this.is_required = is_required;
 	}
 	public String getValue() {
-		return value;
+		return Datetime;
 	}
 	public void setValue(String value) {
-		this.value = value;
+		this.Datetime = Datetime;
 	}
 	public int getIs_required() {
 		return is_required;
