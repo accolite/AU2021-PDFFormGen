@@ -16,7 +16,7 @@ public class DateTime  {
 	@GeneratedValue(generator = "increment")
 	@Column(name = "id")
 	private long id;
-	private String Datetime;
+	private String datetime;
 	public long getId() {
 		return id;
 	}
@@ -32,19 +32,19 @@ public class DateTime  {
 	@JoinColumn(name="formid")
 	private Form FID;
 	
-	public Datetime() {
+	public DateTime() {
 		
 	}
 	
-	public Datetime(String Datetime, int is_required) {
-		this.Datetime = Datetime;
+	public DateTime(String Datetime, int is_required) {
+		this.datetime = Datetime;
 		this.is_required = is_required;
 	}
 	public String getDatetime() {
-		return Datetime;
+		return datetime;
 	}
 	public void setDatetime(String Datetime) {
-		this.Datetime = Datetime;
+		this.datetime = Datetime;
 	}
 	public int getIs_required() {
 		return is_required;

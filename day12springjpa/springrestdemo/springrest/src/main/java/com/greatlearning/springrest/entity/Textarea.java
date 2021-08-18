@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Textarea")
-public class Date  {
+public class Textarea  {
 
 	@Id
 	@GeneratedValue(generator = "increment")
