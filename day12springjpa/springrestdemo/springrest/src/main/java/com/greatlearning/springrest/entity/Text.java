@@ -1,10 +1,16 @@
 package com.greatlearning.springrest.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -12,6 +18,9 @@ import javax.persistence.Table;
 @Table(name = "text")
 public class Text  {
 
+	// value="first_name" is_required=1 max_lenght=30 min_lenght=2 FGid = 1
+	
+	
 	@Id
 	@GeneratedValue(generator = "increment")
 	@Column(name = "id")
@@ -30,9 +39,16 @@ public class Text  {
 	@JoinColumn(name="fg_id")
 	private FieldGroup FG;
 
-	@ManyToOne
-	@JoinColumn(name="formid")
-	private Form FID;
+	@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            },
+            mappedBy = "FTtext")
+	private List<Form> formlist = new ArrayList<>();
+	
+	
+	
 	
 	public Text() {
 		
@@ -43,6 +59,12 @@ public class Text  {
 		this.is_required = is_required;
 		this.max_length = max_length;
 		this.min_length = min_length;
+	}
+	public List<Form> getFormlist() {
+		return formlist;
+	}
+	public void setFormlist(List<Form> formlist) {
+		this.formlist = formlist;
 	}
 	public String getValue() {
 		return value;

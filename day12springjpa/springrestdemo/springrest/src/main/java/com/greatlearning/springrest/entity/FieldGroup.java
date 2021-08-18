@@ -1,9 +1,7 @@
 package com.greatlearning.springrest.entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "fieldgroup")
 public class FieldGroup 
 {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
 	@Column(name ="id")
@@ -35,17 +34,17 @@ public class FieldGroup
 		this.name = name;
 	}
 	
-	@OneToMany(mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Num> FTnum = new ArrayList<>();
+//	@OneToMany(mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Num> FTnum = new ArrayList<>();
 
 	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Text>  FTtext = new ArrayList<>();
 
-	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Email>  FTemail = new ArrayList<>();
+//	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Email>  FTemail = new ArrayList<>();
 	
-	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Email>  FTcheckboxlist = new ArrayList<>();
+//	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<CheckBoxList>  FTcheckboxlist = new ArrayList<>();
 	
 	public long getId() {
 		return id;
@@ -63,13 +62,13 @@ public class FieldGroup
 		this.name = name;
 	}
 
-	public List<Num> getFTnum() {
-		return FTnum;
-	}
-
-	public void setFTnum(ArrayList<Num> fTnum) {
-		FTnum = fTnum;
-	}
+//	public List<Num> getFTnum() {
+//		return FTnum;
+//	}
+//
+//	public void setFTnum(ArrayList<Num> fTnum) {
+//		FTnum = fTnum;
+//	}
 
 	public List<Text> getFTtext() {
 		return FTtext;
