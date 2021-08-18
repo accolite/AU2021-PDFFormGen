@@ -10,12 +10,45 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "form")
 public class Form {
+	
+	
+	// text first_name 1 30 3 fgid = 1 
+	// text 
+	
+
+//	public List<Email> getFTemail() {
+//		return FTemail;
+//	}
+//
+//	public void setFTemail(List<Email> fTemail) {
+//		FTemail = fTemail;
+//	}
+
+//	public List<CheckBoxList> getFTcheckboxlist() {
+//		return FTcheckboxlist;
+//	}
+//
+//	public void setFTcheckboxlist(List<CheckBoxList> fTcheckboxlist) {
+//		FTcheckboxlist = fTcheckboxlist;
+//	}
+
+//	public void setFTnum(List<Num> fTnum) {
+//		FTnum = fTnum;
+//	}
+
+	public void setFTtext(List<Text> fTtext) {
+		FTtext = fTtext;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
@@ -32,17 +65,37 @@ public class Form {
 		this.name = name;
 	}
 	
-	@OneToMany(mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Num> FTnum = new ArrayList<>();
+//	@OneToMany(mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Num> FTnum = new ArrayList<>();
 
-	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	
+
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	@JoinTable(name = "form_text",
+			joinColumns = { @JoinColumn(name = "form_id") },
+			inverseJoinColumns = { @JoinColumn(name = "text_id") }
+			)
+
 	private List<Text>  FTtext = new ArrayList<>();
 
-	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Email>  FTemail = new ArrayList<>();
+//	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Email>  FTemail = new ArrayList<>();
 	
-	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Email>  FTcheckboxlist = new ArrayList<>();
+//	@OneToMany (mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	@JoinTable(name = "checkboxlist_text",
+			joinColumns = { @JoinColumn(name = "form_id") },
+			inverseJoinColumns = { @JoinColumn(name = "cbl_id") }
+			)
+	private List<CheckBoxList>  FTcheckboxlist = new ArrayList<>();
 	
 	public long getId() {
 		return id;
@@ -60,13 +113,13 @@ public class Form {
 		this.name = name;
 	}
 
-	public List<Num> getFTnum() {
-		return FTnum;
-	}
-
-	public void setFTnum(ArrayList<Num> fTnum) {
-		FTnum = fTnum;
-	}
+//	public List<Num> getFTnum() {
+//		return FTnum;
+//	}
+//
+//	public void setFTnum(ArrayList<Num> fTnum) {
+//		FTnum = fTnum;
+//	}
 
 	public List<Text> getFTtext() {
 		return FTtext;

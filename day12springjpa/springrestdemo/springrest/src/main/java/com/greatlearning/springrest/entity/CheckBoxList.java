@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +21,6 @@ public class CheckBoxList {
 	@GeneratedValue(generator = "increment")
 	@Column(name = "id")
 	private long id;
-	
 	String value;
 	@OneToMany(mappedBy = "CB", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<BoxItem> boxItems = new ArrayList<>();
@@ -29,9 +29,14 @@ public class CheckBoxList {
 	@JoinColumn(name="fg_id")
 	private FieldGroup FG;
 
-	@ManyToOne
-	@JoinColumn(name="formid")
-	private Form FID;
+	@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            },
+            mappedBy = "FTcheckboxlist")
+	private List<Form> formlist = new ArrayList<>();
+	
 	
 	public long getId() {
 		return id;
