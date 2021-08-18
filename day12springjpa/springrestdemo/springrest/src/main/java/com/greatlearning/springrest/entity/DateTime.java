@@ -32,18 +32,18 @@ public class DateTime  {
 	@JoinColumn(name="formid")
 	private Form FID;
 	
-	public Date() {
+	public Datetime() {
 		
 	}
 	
-	public Text(String Datetime, int is_required) {
+	public Datetime(String Datetime, int is_required) {
 		this.Datetime = Datetime;
 		this.is_required = is_required;
 	}
-	public String getValue() {
+	public String getDatetime() {
 		return Datetime;
 	}
-	public void setValue(String value) {
+	public void setDatetime(String Datetime) {
 		this.Datetime = Datetime;
 	}
 	public int getIs_required() {

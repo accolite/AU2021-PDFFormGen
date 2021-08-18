@@ -36,14 +36,14 @@ public class Date  {
 		
 	}
 	
-	public Text(String date, int is_required) {
+	public Date(String date, int is_required) {
 		this.date = date;
 		this.is_required = is_required;
 	}
-	public String getValue() {
+	public String getDate() {
 		return date;
 	}
-	public void setValue(String value) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public int getIs_required() {

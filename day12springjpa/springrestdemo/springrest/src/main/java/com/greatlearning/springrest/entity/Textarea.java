@@ -34,18 +34,18 @@ public class Date  {
 	@JoinColumn(name="formid")
 	private Form FID;
 	
-	public Date() {
+	public Textarea() {
 		
 	}
 	
-	public Text(String text, int is_required) {
+	public Textarea(String text, int is_required) {
 		this.text = text;
 		this.is_required = is_required;
 	}
-	public String getValue() {
+	public String getText() {
 		return text;
 	}
-	public void setValue(String value) {
+	public void setText(String text) {
 		this.text = text;
 	}
 	public int getIs_required() {
