@@ -16,6 +16,7 @@ import com.greatlearning.springrest.entity.CheckBoxList;
 import com.greatlearning.springrest.entity.FieldGroup;
 import com.greatlearning.springrest.entity.Form;
 import com.greatlearning.springrest.entity.Num;
+import com.greatlearning.springrest.entity.Password;
 import com.greatlearning.springrest.entity.Text;
 
 import org.json.*;
@@ -154,24 +155,28 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
+	@Transactional
 	public void addCheckBox(int fgid, String name, int is_required, String value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void addDate(int fgid, String name, int is_required, String value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void addDateTime(int fgid, String name, int is_required, String value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void addEmail(int fgid, String name, int is_required, String value) {
 		
 	}
@@ -179,13 +184,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 
 	@Override
+	@Transactional
 	public void addPassword(int fgid, String name, int is_required, int max_length, int min_length) {
 		// TODO Auto-generated method stub
-	
+		System.out.println(name);
+		Session currentSession1 = entityManager.unwrap(Session.class);
+		long id = fgid;
+		FieldGroup fg = currentSession1.get(FieldGroup.class, id);
+		System.out.println(fg);
+		Password t = new Password(name,is_required,max_length,min_length);
+		t.setFG(fg);
+		fg.getFTPassword().add(t);
+		currentSession1.update(fg);
 		
 	}
 
 	@Override
+	@Transactional
 	public void addTextarea(int fgid, String name, int is_required, int max_length, int min_length) {
 		// TODO Auto-generated method stub
 		
@@ -193,6 +208,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
+	@Transactional
 	public void addNum(int fgid, String name, int is_required, int max_length, int min_length) {
 		// TODO Auto-generated method stub
 		Session currentSession1 = entityManager.unwrap(Session.class);
