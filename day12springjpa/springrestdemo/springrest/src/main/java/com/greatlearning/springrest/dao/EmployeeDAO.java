@@ -30,5 +30,7 @@ public interface EmployeeDAO {
 	public void addPassword(int fgid,String name,int is_required, int max_length, int min_length);
 	
 	public void addTextarea(int fgid,String name,int is_required, int max_length, int min_length);
+
+	public void createform(String string, List<Integer> textl, List<Integer> checkboxlistl);
 	
 }

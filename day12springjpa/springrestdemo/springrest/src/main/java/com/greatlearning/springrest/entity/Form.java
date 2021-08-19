@@ -51,6 +51,30 @@ public class Form {
 	private List<Num> FTNum=new ArrayList<>();
 	
 
+	public List<Num> getFTNum() {
+		return FTNum;
+	}
+
+	public void setFTNum(List<Num> fTNum) {
+		FTNum = fTNum;
+	}
+
+	public List<Email> getFTemail() {
+		return FTemail;
+	}
+
+	public void setFTemail(List<Email> fTemail) {
+		FTemail = fTemail;
+	}
+
+	public List<CheckBoxList> getFTcheckboxlist() {
+		return FTcheckboxlist;
+	}
+
+	public void setFTcheckboxlist(List<CheckBoxList> fTcheckboxlist) {
+		FTcheckboxlist = fTcheckboxlist;
+	}
+
 	@ManyToMany(fetch = FetchType.LAZY,
 			cascade = {
 					CascadeType.PERSIST,

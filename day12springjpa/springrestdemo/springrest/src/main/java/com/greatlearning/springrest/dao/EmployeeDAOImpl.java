@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greatlearning.springrest.entity.BoxItem;
 import com.greatlearning.springrest.entity.CheckBoxList;
 import com.greatlearning.springrest.entity.FieldGroup;
+import com.greatlearning.springrest.entity.Form;
 import com.greatlearning.springrest.entity.Num;
 import com.greatlearning.springrest.entity.Text;
 
@@ -22,9 +23,6 @@ import org.json.*;
 public class EmployeeDAOImpl implements EmployeeDAO {
 	@Autowired
 	private EntityManager entityManager;
-	
-
-
 	
 	
 	@Override
@@ -74,6 +72,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
+	@Transactional
 	public JSONObject getfg(int i) {
 		Session currentSession1 = entityManager.unwrap(Session.class);
 		long id = i;
@@ -121,16 +120,33 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	    	
 	    }
 
+	    
+	    JSONArray numarr = new JSONArray();
+	    List<Num> numl = fg.getFTNum();
+	    
+	    for(Num n: numl) {
+	    	JSONObject obj = new JSONObject();
+	    	try {
+	    		obj.put("id", n.getId());
+		    	obj.put("value", n.getValue());
+				obj.put("is_required", n.getIs_required());
+				obj.put("max_length", n.getMax_length());
+				obj.put("min_length", n.getMin_length());
+				numarr.put(obj);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+
 	    try {
 			res.put("text", jsonArray);
 		    res.put("checkboxlist", cblarr);
+		    res.put("number", numarr);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-	    
-	    
 	    return res;
 //	    ObjectMapper mapper = new ObjectMapper();
 	    
@@ -187,6 +203,30 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		t.setFG(fg);
 		fg.getFTNum().add(t);
 		currentSession1.update(fg);
+	}
+
+	@Override
+	@Transactional
+	public void createform(String string, List<Integer> textl, List<Integer> checkboxlistl) {
+
+		Form f = new Form(string);
+		for(Integer i: textl) {
+			Session currentSession1 = entityManager.unwrap(Session.class);
+			long id = i;
+			Text t = currentSession1.get(Text.class, id);
+			f.getFTtext().add(t);
+		}
+		
+		for(Integer i: checkboxlistl) {
+			Session currentSession1 = entityManager.unwrap(Session.class);
+			long id = i;
+			CheckBoxList t = currentSession1.get(CheckBoxList.class, id);
+			f.getFTcheckboxlist().add(t);
+		}
+		Session currentSession = entityManager.unwrap(Session.class);
+		currentSession.save(f);
+//		Session currentSession2 = entityManager.unwrap(Session.class);
+		
 	}
 	
 

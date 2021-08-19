@@ -111,4 +111,11 @@ public class EmployeeRestController {
 		
 	}
 	
+	@PostMapping("/createform")
+	public void createform(@RequestBody LinkedHashMap mp) {
+		List<Integer> textl = (List<Integer>) mp.get("text");
+		List<Integer> checkboxlistl = (List<Integer>) mp.get("checkboxlist");
+		employeeDAO.createform((String)mp.get("name"),textl,checkboxlistl);
+	}
+	
 }
