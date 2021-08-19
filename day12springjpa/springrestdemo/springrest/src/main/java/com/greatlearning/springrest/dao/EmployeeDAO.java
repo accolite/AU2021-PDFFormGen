@@ -5,6 +5,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 import com.greatlearning.springrest.entity.BoxItem;
+import com.greatlearning.springrest.entity.Password;
 
 
 public interface EmployeeDAO {
@@ -31,6 +32,8 @@ public interface EmployeeDAO {
 	
 	public void addTextarea(int fgid,String name,int is_required, int max_length, int min_length);
 
-	public void createform(String string, List<Integer> textl, List<Integer> checkboxlistl);
+	public void createform(String string, List<Integer> textl, List<Integer> checkboxlistl, List<Integer> passwordl);
+
+	public JSONObject getform(int i);
 	
 }

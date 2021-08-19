@@ -58,6 +58,14 @@ public class Form {
 	private List<Password> FTPassword=new ArrayList<>();
 	
 
+	public List<Password> getFTPassword() {
+		return FTPassword;
+	}
+
+	public void setFTPassword(List<Password> fTPassword) {
+		FTPassword = fTPassword;
+	}
+
 	public List<Num> getFTNum() {
 		return FTNum;
 	}

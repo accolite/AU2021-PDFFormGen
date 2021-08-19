@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.greatlearning.springrest.dao.EmployeeDAO;
 import com.greatlearning.springrest.entity.BoxItem;
+import com.greatlearning.springrest.entity.Password;
 import com.greatlearning.springrest.service.EmployeeService;
 
 @RestController
@@ -115,7 +116,14 @@ public class EmployeeRestController {
 	public void createform(@RequestBody LinkedHashMap mp) {
 		List<Integer> textl = (List<Integer>) mp.get("text");
 		List<Integer> checkboxlistl = (List<Integer>) mp.get("checkboxlist");
-		employeeDAO.createform((String)mp.get("name"),textl,checkboxlistl);
+		List<Integer> passwordl = (List<Integer>) mp.get("password");
+		employeeDAO.createform((String)mp.get("name"),textl,checkboxlistl,passwordl);
 	}
+	
+	@PostMapping("/getform")
+	public String getform(@RequestBody LinkedHashMap mp) {
+		return employeeDAO.getform((int)mp.get("formid")).toString();
+	}
+	
 	
 }
