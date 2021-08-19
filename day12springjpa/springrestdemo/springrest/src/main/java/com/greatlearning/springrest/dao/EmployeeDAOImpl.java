@@ -83,6 +83,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	    for(Text t: FTtext) {
 	    	JSONObject obj = new JSONObject();
 	    	try {
+	    		obj.put("id", t.getId());
 		    	obj.put("value", t.getValue());
 				obj.put("is_required", t.getIs_required());
 				obj.put("max_length", t.getMax_length());
@@ -106,6 +107,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			    	for(BoxItem b: bi) {
 			    		valobj.put(b.getValue(), b.getText());
 			    	}
+			    cbli.put("id", cb.getId());
 		    	cbli.put("name", cb.getValue());
 		    	cbli.put("is_required", cb.getIs_required());
 		    	cbli.put("val", valobj);
@@ -175,5 +177,5 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		
 	}
 	
-	
+
 }

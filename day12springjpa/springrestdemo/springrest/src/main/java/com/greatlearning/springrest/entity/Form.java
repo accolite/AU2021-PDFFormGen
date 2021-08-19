@@ -21,10 +21,6 @@ import javax.persistence.JoinColumn;
 @Table(name = "form")
 public class Form {
 	
-	
-	// text first_name 1 30 3 fgid = 1 
-	// text 
-	
 
 //	public List<Email> getFTemail() {
 //		return FTemail;
