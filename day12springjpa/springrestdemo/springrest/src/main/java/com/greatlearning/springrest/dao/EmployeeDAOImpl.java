@@ -93,14 +93,39 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				e.printStackTrace();
 			}
 	    }
+//	    System.out.println(res);
+	    JSONArray cblarr = new JSONArray();
+	    List<CheckBoxList> cbl = fg.getFTcheckboxlist();
+	    
+	    
+	    try {
+	    	for(CheckBoxList cb: cbl) {
+		    	JSONObject cbli = new JSONObject();
+		    	List<BoxItem> bi = cb.getBoxItems();
+		    	JSONObject valobj = new JSONObject();
+			    	for(BoxItem b: bi) {
+			    		valobj.put(b.getValue(), b.getText());
+			    	}
+		    	cbli.put("name", cb.getValue());
+		    	cbli.put("is_required", cb.getIs_required());
+		    	cbli.put("val", valobj);
+		    	cblarr.put(cbli);
+		    }
+	    	
+	    }
+	    catch(Exception e) {
+	    	
+	    }
+
 	    try {
 			res.put("text", jsonArray);
+		    res.put("checkboxlist", cblarr);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//	    System.out.println(res);
-	    List<CheckBoxList> cbl = fg.getFTcheckboxlist();
+	    
+	    
 	    
 	    return res;
 //	    ObjectMapper mapper = new ObjectMapper();
