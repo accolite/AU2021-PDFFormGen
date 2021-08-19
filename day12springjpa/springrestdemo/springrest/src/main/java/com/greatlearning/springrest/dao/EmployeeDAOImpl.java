@@ -14,7 +14,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greatlearning.springrest.entity.BoxItem;
 import com.greatlearning.springrest.entity.CheckBoxList;
 import com.greatlearning.springrest.entity.FieldGroup;
+import com.greatlearning.springrest.entity.Num;
 import com.greatlearning.springrest.entity.Text;
+
 import org.json.*;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
@@ -155,19 +157,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public void addEmail(int fgid, String name, int is_required, String value) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void addNum(int fgid, String name, int is_required, int max_length, int min_length) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void addPassword(int fgid, String name, int is_required, int max_length, int min_length) {
 		// TODO Auto-generated method stub
+	
 		
 	}
 
@@ -175,6 +173,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public void addTextarea(int fgid, String name, int is_required, int max_length, int min_length) {
 		// TODO Auto-generated method stub
 		
+		
+	}
+
+	@Override
+	public void addNum(int fgid, String name, int is_required, int max_length, int min_length) {
+		// TODO Auto-generated method stub
+		Session currentSession1 = entityManager.unwrap(Session.class);
+		long id = fgid;
+		FieldGroup fg = currentSession1.get(FieldGroup.class, id);
+		System.out.println(fg);
+		Num t = new Num(name,is_required,max_length,min_length);
+		t.setFG(fg);
+		fg.getFTNum().add(t);
+		currentSession1.update(fg);
 	}
 	
 

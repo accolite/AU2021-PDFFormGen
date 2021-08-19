@@ -30,7 +30,13 @@ public class FieldGroup
 	public void setFTtext(List<Text> fTtext) {
 		FTtext = fTtext;
 	}
+    
+	public void setFTNum(List<Num> fTNum) {
+		FTNum = fTNum;
+	}
 
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
 	@Column(name ="id")
@@ -51,6 +57,23 @@ public class FieldGroup
 
 	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Text>  FTtext = new ArrayList<>();
+	
+	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Num>  FTNum = new ArrayList<>();
+
+	public List<Email> getFTemail() {
+		return FTemail;
+	}
+
+	public void setFTemail(List<Email> fTemail) {
+		FTemail = fTemail;
+	}
+
+	public List<Num> getFTNum() {
+		return FTNum;
+	}
+
+
 
 	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Email>  FTemail = new ArrayList<>();
