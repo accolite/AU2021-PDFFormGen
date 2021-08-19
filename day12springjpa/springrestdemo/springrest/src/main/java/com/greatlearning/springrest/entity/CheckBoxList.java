@@ -30,6 +30,14 @@ public class CheckBoxList {
 	@Column(name = "id")
 	private long id;
 	String value;
+	public int getIs_required() {
+		return is_required;
+	}
+
+	public void setIs_required(int is_required) {
+		this.is_required = is_required;
+	}
+
 	int is_required;
 	@OneToMany(mappedBy = "CB", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<BoxItem> boxItems = new ArrayList<>();
