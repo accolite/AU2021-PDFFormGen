@@ -74,4 +74,41 @@ public class EmployeeRestController {
 		return employeeDAO.getfg((int)mp.get("fgid")).toString();
 	}
 	
+	
+	
+	@PostMapping("/addCheckbox")
+	public void addCheckBox(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
+	@PostMapping("/addDate")
+	public void addDate(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
+	@PostMapping("/addDateTime")
+	public void addDateTime(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
+	@PostMapping("/addEmail")
+	public void addEmail(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
+	@PostMapping("/addNum")
+	public void addNum(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
+	@PostMapping("/addPassword")
+	public void addPassword(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
+	@PostMapping("/addTextArea")
+	public void addTextArea(@RequestBody LinkedHashMap mp) {
+		
+	}
+	
 }

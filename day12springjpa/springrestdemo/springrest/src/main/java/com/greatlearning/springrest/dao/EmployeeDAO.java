@@ -15,4 +15,20 @@ public interface EmployeeDAO {
 	public void addFieldGroup(String string);
 
 	public JSONObject getfg(int i);
+	
+	
+	public void addCheckBox(int fgid,String name,int is_required,String value);
+	
+	public void addDate(int fgid,String name,int is_required,String value);
+	
+	public void addDateTime(int fgid,String name,int is_required,String value);
+	
+	public void addEmail(int fgid,String name,int is_required,String value);
+	
+	public void addNum(int fgid,String name,int is_required,int max_length, int min_length);
+	
+	public void addPassword(int fgid,String name,int is_required, int max_length, int min_length);
+	
+	public void addTextarea(int fgid,String name,int is_required, int max_length, int min_length);
+	
 }

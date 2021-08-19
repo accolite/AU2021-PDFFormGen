@@ -107,6 +107,48 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	    
 //	    System.out.println(responseDetailsJson);
 	}
+
+	@Override
+	public void addCheckBox(int fgid, String name, int is_required, String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addDate(int fgid, String name, int is_required, String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addDateTime(int fgid, String name, int is_required, String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEmail(int fgid, String name, int is_required, String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addNum(int fgid, String name, int is_required, int max_length, int min_length) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addPassword(int fgid, String name, int is_required, int max_length, int min_length) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addTextarea(int fgid, String name, int is_required, int max_length, int min_length) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
