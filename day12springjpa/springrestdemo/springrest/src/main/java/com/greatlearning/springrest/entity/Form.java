@@ -24,27 +24,7 @@ public class Form {
 	
 	// text first_name 1 30 3 fgid = 1 
 	// text 
-	
 
-//	public List<Email> getFTemail() {
-//		return FTemail;
-//	}
-//
-//	public void setFTemail(List<Email> fTemail) {
-//		FTemail = fTemail;
-//	}
-
-//	public List<CheckBoxList> getFTcheckboxlist() {
-//		return FTcheckboxlist;
-//	}
-//
-//	public void setFTcheckboxlist(List<CheckBoxList> fTcheckboxlist) {
-//		FTcheckboxlist = fTcheckboxlist;
-//	}
-
-//	public void setFTnum(List<Num> fTnum) {
-//		FTnum = fTnum;
-//	}
 
 	public void setFTtext(List<Text> fTtext) {
 		FTtext = fTtext;
@@ -65,9 +45,13 @@ public class Form {
 		this.name = name;
 	}
 	
-//	@OneToMany(mappedBy = "formid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private List<Num> FTnum = new ArrayList<>();
-
+	
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	private List<Num> FTNum=new ArrayList<>();
 	
 
 	@ManyToMany(fetch = FetchType.LAZY,
