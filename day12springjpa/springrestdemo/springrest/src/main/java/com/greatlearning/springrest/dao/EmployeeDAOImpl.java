@@ -40,7 +40,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	
 	@Override
 	@Transactional
-	public void addCheckBoxList(int fgid,String name,int is_required,List<BoxItem> boxlist) {
+	public void addCheckBoxList(long fgid,String name,int is_required,List<BoxItem> boxlist) {
 //		System.out.println("coming");
 		Session currentSession1 = entityManager.unwrap(Session.class);
 		long id = fgid;

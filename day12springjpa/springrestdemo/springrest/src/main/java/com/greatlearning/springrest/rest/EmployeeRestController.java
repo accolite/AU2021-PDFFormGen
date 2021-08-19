@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.greatlearning.springrest.entity.CheckBoxList;
 import com.greatlearning.springrest.service.EmployeeService;
 
 @RestController
@@ -40,5 +40,11 @@ public class EmployeeRestController {
 //		System.out.println(mp.get("fgid"));
 //		System.out.println(obj);
 	}
+	
+	@PostMapping("/addCheckboxlist")
+    public void addCheckboxlist(@RequestBody CheckBoxList c ) {
+		 employeeservice.addCheckBoxList(c.getFG().getId(),c.getValue(),c.getIs_required(),c.getBoxItems());
+	 }
+
 	
 }
