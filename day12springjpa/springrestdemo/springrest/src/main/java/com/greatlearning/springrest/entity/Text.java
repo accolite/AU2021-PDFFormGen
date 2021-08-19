@@ -50,6 +50,11 @@ public class Text  {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Text [id=" + id + ", value=" + value + ", is_required=" + is_required + ", max_length=" + max_length
+				+ ", min_length=" + min_length + "]";
+	}
 	public Text() {
 		
 	}

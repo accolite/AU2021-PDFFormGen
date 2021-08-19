@@ -82,16 +82,10 @@ public class CheckBoxList {
 	public CheckBoxList() {
 		
 	}
-
-	public int getIs_required() {
-		return is_required;
-	}
-
-	public void setIs_required(int is_required) {
-		this.is_required = is_required;
-	}
 	
 	public CheckBoxList(String value,int is_required) {
+		this.value = value;
+		this.is_required = is_required;
 		
 	}
 	

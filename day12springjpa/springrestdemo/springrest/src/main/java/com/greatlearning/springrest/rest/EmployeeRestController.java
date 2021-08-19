@@ -1,9 +1,12 @@
 package com.greatlearning.springrest.rest;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +17,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatlearning.springrest.entity.CheckBoxList;
+import com.greatlearning.springrest.dao.EmployeeDAO;
+import com.greatlearning.springrest.entity.BoxItem;
 import com.greatlearning.springrest.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
 	
+	@Autowired
+	private EmployeeDAO employeeDAO;
 	
 	@Autowired
 	private EmployeeService employeeservice;
@@ -42,9 +48,30 @@ public class EmployeeRestController {
 	}
 	
 	@PostMapping("/addCheckboxlist")
-    public void addCheckboxlist(@RequestBody CheckBoxList c ) {
-		 employeeservice.addCheckBoxList(c.getFG().getId(),c.getValue(),c.getIs_required(),c.getBoxItems());
-	 }
-
+	public void addCheckBoxList(@RequestBody LinkedHashMap mp)
+	{
+		List<BoxItem> bl = new ArrayList<>();
+		Collection<String> lk = ((LinkedHashMap) mp.get("val")).keySet();
+		System.out.println(lk);
+//		System.out.println(lv);
+		for(String s: lk)
+		{
+			bl.add(new BoxItem(s,(String) ((LinkedHashMap) mp.get("val")).get(s)));
+		}
+		System.out.println(bl);
+		
+		employeeDAO.addCheckBoxList((int)mp.get("fgid"), (String)mp.get("name"), (int)mp.get("is_required"), bl);
+	}
+	
+	@PostMapping("/addfieldgroup")
+	public void addfieldgroup(@RequestBody LinkedHashMap mp)
+	{
+		employeeDAO.addFieldGroup((String)mp.get("name"));
+	}
+	
+	@PostMapping("/getfg")
+	public String getfg(@RequestBody LinkedHashMap mp) {
+		return employeeDAO.getfg((int)mp.get("fgid")).toString();
+	}
 	
 }

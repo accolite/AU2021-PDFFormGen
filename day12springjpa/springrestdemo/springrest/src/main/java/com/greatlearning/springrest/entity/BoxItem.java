@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "checkboxlist")
+@Table(name = "boxitem")
 public class BoxItem {
 	@Id
 	@GeneratedValue(generator = "increment")
@@ -20,6 +20,13 @@ public class BoxItem {
 	@ManyToOne
 	@JoinColumn(name="boxid")
 	private CheckBoxList CB;
+	public BoxItem() {
+		
+	}
+	public BoxItem(String val,String text) {
+		this.value = val;
+		this.text = text;
+	}
 	public long getId() {
 		return id;
 	}

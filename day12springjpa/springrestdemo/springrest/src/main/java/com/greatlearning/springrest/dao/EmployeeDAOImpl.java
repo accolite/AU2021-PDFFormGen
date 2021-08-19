@@ -10,11 +10,12 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greatlearning.springrest.entity.BoxItem;
 import com.greatlearning.springrest.entity.CheckBoxList;
 import com.greatlearning.springrest.entity.FieldGroup;
 import com.greatlearning.springrest.entity.Text;
-
+import org.json.*;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 	@Autowired
@@ -40,7 +41,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	
 	@Override
 	@Transactional
-	public void addCheckBoxList(long fgid,String name,int is_required,List<BoxItem> boxlist) {
+	public void addCheckBoxList(int fgid,String name,int is_required,List<BoxItem> boxlist) {
 //		System.out.println("coming");
 		Session currentSession1 = entityManager.unwrap(Session.class);
 		long id = fgid;
@@ -51,11 +52,60 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 //		fg.getFTtext().add(t);
 //		currentSession1.update(fg);
 		CheckBoxList cbl = new CheckBoxList(name,is_required);
-		cbl.setBoxItems(boxlist);
+		for(BoxItem b: boxlist) {
+			b.setCB(cbl);
+			cbl.getBoxItems().add(b);
+		}
+//		cbl.setBoxItems(boxlist);
 		Session currentSession = entityManager.unwrap(Session.class);
 		cbl.setFG(fg);
 		currentSession.save(cbl);
 		
+	}
+
+	@Override
+	public void addFieldGroup(String string) {
+		FieldGroup fg = new FieldGroup(string);
+		Session currentSession1 = entityManager.unwrap(Session.class);
+		currentSession1.save(fg);
+		
+	}
+
+	@Override
+	public JSONObject getfg(int i) {
+		Session currentSession1 = entityManager.unwrap(Session.class);
+		long id = i;
+		FieldGroup fg = currentSession1.get(FieldGroup.class, id);
+		List<Text> FTtext = fg.getFTtext();
+	    System.out.println(FTtext);
+		JSONObject res = new JSONObject();
+	    JSONArray jsonArray = new JSONArray();
+	    for(Text t: FTtext) {
+	    	JSONObject obj = new JSONObject();
+	    	try {
+		    	obj.put("value", t.getValue());
+				obj.put("is_required", t.getIs_required());
+				obj.put("max_length", t.getMax_length());
+				obj.put("min_length", t.getMin_length());
+				jsonArray.put(obj);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+	    try {
+			res.put("text", jsonArray);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//	    System.out.println(res);
+	    List<CheckBoxList> cbl = fg.getFTcheckboxlist();
+	    
+	    return res;
+//	    ObjectMapper mapper = new ObjectMapper();
+	    
+//	    System.out.println(responseDetailsJson);
 	}
 	
 	
