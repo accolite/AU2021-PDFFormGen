@@ -60,6 +60,18 @@ public class FieldGroup
 	
 	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Num>  FTNum = new ArrayList<>();
+	
+	@OneToMany (mappedBy = "FG", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Password>  FTPassword = new ArrayList<>();
+
+	
+	public List<Password> getFTPassword() {
+		return FTPassword;
+	}
+
+	public void setFTPassword(List<Password> fTPassword) {
+		FTPassword = fTPassword;
+	}
 
 	public List<Email> getFTemail() {
 		return FTemail;

@@ -103,7 +103,7 @@ public class EmployeeRestController {
 	
 	@PostMapping("/addPassword")
 	public void addPassword(@RequestBody LinkedHashMap mp) {
-		
+		employeeDAO.addPassword((int)mp.get("fgid"),(String)mp.get("value"),(int)mp.get("is_required"),(int)mp.get("max_length"),(int)mp.get("min_length"));
 	}
 	
 	@PostMapping("/addTextArea")

@@ -50,6 +50,13 @@ public class Form {
 			})
 	private List<Num> FTNum=new ArrayList<>();
 	
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	private List<Password> FTPassword=new ArrayList<>();
+	
 
 	@ManyToMany(fetch = FetchType.LAZY,
 			cascade = {
