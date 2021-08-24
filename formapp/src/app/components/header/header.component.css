@@ -1,0 +1,45 @@
+.headername{
+    font-family: sans-serif;
+    background-color: rgb(212, 212, 212);
+    margin: 0;
+    height:60px;
+    padding-top: 19px;
+    padding-left: 20px;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    border-color: black;
+  }
+  td {
+    padding-right: 8px;
+  } 
+.finput{
+    margin-top: 12px;
+    margin-left: 50px;
+    border-radius: 7%;
+    border-color: rgb(231, 231, 231);
+    width:500px;
+    height: 27px;
+    box-shadow: none;
+}
+.label{
+    margin-left: 40px;
+    font-weight: bolder;
+
+}
+.radio{
+    display: flex;
+    font-family: sans-serif;
+    margin-left: 40px;
+    font-weight: bolder;
+
+}
+.labelforradio{
+ margin-left: 30px;
+}
+.line1{
+    color:rgb(228, 228, 228);
+    margin-top: 15px;
+}
