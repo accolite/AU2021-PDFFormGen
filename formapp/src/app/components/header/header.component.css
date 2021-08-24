@@ -46,3 +46,10 @@
 .headcont{
     display: flex;
 }
+.buttons{
+    height: 30px;
+    margin-top: 60px;
+    margin-left: 60px;
+    border-radius: 9%;
+    font-weight: bold;
+}

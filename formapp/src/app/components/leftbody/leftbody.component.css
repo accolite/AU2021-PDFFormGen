@@ -1,3 +1,28 @@
 id{
     color: black;
 }
+.fdclass{
+    width: 90%;
+    
+   
+    padding: 10px;
+    border: 2px solid rgb(172, 172, 172);
+    height: 400px;
+    border-radius: 2%;
+    background-color: rgb(241, 237, 237);
+}
+.sentence{
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(173, 209, 212);
+    height: 50px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 50px;
+    border-radius: 4%;
+    color:rgb(57, 105, 105);
+    width:70%;
+    margin-left: 65px;
+    font-size: medium;
+}
