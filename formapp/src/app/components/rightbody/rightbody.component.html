@@ -23,8 +23,10 @@
             <mat-tab label="Properties" >
               <div class="fdclass">
                   <div id="idforlabel">
+                   <form>
                     <label for="label" class="fdclass1"><b>Label :</b></label>
                     <input type="text" name="label" class="fdinputclass" [(ngModel)]="text.name">
+                   </form>
                   </div>
 
                  <div id="idforlabel">
@@ -53,21 +55,23 @@
             </mat-tab>
             <mat-tab label="Validation">
                 <div class="fdclass">
-                   <div id="idforlabel">
-                       <label for="minlen" class="fdclass1"><b>Min-Length</b></label>
-                       <input name="minlen"  class="fdinputclass" [(ngModel)]="text.min_length">
-                   </div>
-                   <div id="idforlabel">
-                    <label for="maxlen" class="fdclass1"><b>Max-Length</b></label>
-                    <input  name="maxlen" class="fdinputclass" [(ngModel)]="text.max_length" [ngModelOptions]="{standalone: true}">
-                   </div>
-                   <div id="idforlabel">
-                    <label for="isreq"  class="fdclass1"><b>Required</b></label>
-                    <input type="checkbox" name="isreq" class="fdinputclass" (change)="onCheckboxChange()">
-                   </div>
-                   <div id="idforlabel">
-                     <button>Add</button>
-                   </div>
+                   <form>
+                    <div id="idforlabel">
+                        <label for="minlen" class="fdclass1"><b>Min-Length</b></label>
+                        <input [(ngModel)]="text.min_length" name="minlen"  class="fdinputclass" type="number">
+                    </div>
+                    <div id="idforlabel">
+                     <label for="maxlen" class="fdclass1"><b>Max-Length</b></label>
+                     <input  name="maxlen" class="fdinputclass" [(ngModel)]="text.max_length" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div id="idforlabel">
+                     <label for="isreq"  class="fdclass1"><b>Required</b></label>
+                     <input type="checkbox" name="isreq" class="fdinputclass" (change)="onCheckboxChange()">
+                    </div>
+                    <div id="idforlabel">
+                      <button>Add</button>
+                    </div>
+                   </form>
                 </div>
               </mat-tab>
         
