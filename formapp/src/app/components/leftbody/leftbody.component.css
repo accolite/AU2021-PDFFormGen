@@ -26,3 +26,7 @@ id{
     margin-left: 65px;
     font-size: medium;
 }
+
+.leftbody{
+    display: flex;
+}

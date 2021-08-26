@@ -1,1 +1,78 @@
-<p>rightbody works!</p>
+<div>
+
+    <div>
+        <h3 class="addnewf">Add new fields</h3>
+    </div>
+    
+    <div id="selectdivforf">
+        <label for="field" id="labelforselect"><b>Field Type</b></label>
+        <select name="field" id="options">
+          <option value="text">Text</option>
+          <option value="email">Email</option>
+          <option value="number">Number</option>
+          <option value="password">Password</option>
+          <option value="textarea">Textarea</option>
+          <option value="chechbox">Chechbox</option>
+          <option value="date">Date</option>
+        </select>
+    </div>
+
+    <div>
+        <mat-tab-group color="warn" backgroundColor='warn' class="tabgroup" style="width: 81%; ">
+
+            <mat-tab label="Properties" >
+              <div class="fdclass">
+                  <div id="idforlabel">
+                    <label for="label" class="fdclass1"><b>Label :</b></label>
+                    <input type="text" name="label" class="fdinputclass">
+                  </div>
+
+                 <div id="idforlabel">
+                    <label for="fdgroups" class="fdclass1"><b>FieldGroups :</b></label>
+                    <select name="fdgroups" class="fdinputclass">
+                        <option value="fd1">FieldGroup-1</option>
+                        <option value="fd2">FieldGroup-2</option>
+                        <option value="fd3">FieldGroup-3</option>
+                        <option value="fd4">FieldGroup-4</option>
+                    </select>
+                 </div>
+
+                 <div id="idforbutton">
+                    <button type="button" id="savebutton">Save</button>
+                    <button type="button"id ="cancelbutton">Cancel</button>
+                 </div>
+
+              </div>
+            </mat-tab>
+        
+        
+            <mat-tab label="Options">
+              <div class="fdclass">
+                <h1 id="optionsid">No Options Available</h1>
+              </div>
+            </mat-tab>
+            <mat-tab label="Validation">
+                <div class="fdclass">
+                   <div id="idforlabel">
+                       <label for="minlen" class="fdclass1"><b>Min-Length</b></label>
+                       <input type="number" name="minlen"  class="fdinputclass">
+                   </div>
+                   <div id="idforlabel">
+                    <label for="maxlen" class="fdclass1"><b>Min-Length</b></label>
+                    <input type="number" name="maxlen" class="fdinputclass" >
+                   </div>
+                   <div id="idforlabel">
+                    <label for="isreq"  class="fdclass1"><b>Min-Length</b></label>
+                    <input type="checkbox" name="isreq" class="fdinputclass" >
+                   </div>
+                </div>
+              </mat-tab>
+        
+          </mat-tab-group>
+    </div>
+
+    <div>
+        <h1 id="fgbottom">FieldGroups</h1>
+    </div>
+
+</div>

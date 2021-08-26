@@ -1,0 +1,87 @@
+.addnewf{
+    height: 48px;
+    width: 350px;
+    background-color:rgb(63,81,181);
+     color: rgb(172, 172, 172);;
+    padding-left: 100px;
+    align-items: center;
+}
+#selectdivforf{
+    border: 2px solid rgb(172, 172, 172);
+   height: 30px;
+   width: 80%;
+   border-radius: 4%;
+   margin-top: 0px;
+   padding-top: 10px;
+   background-color: rgb(241, 237, 237);
+}
+
+#labelforselect{
+    color: blueviolet;
+    padding-right:60px ;
+    padding-left: 40px;
+    padding-top: 10px;
+}
+
+#options{
+    height: 20px;
+    width:150px
+}
+.fdclass{
+    border: 2px solid rgb(172, 172, 172);
+    height: 230px;
+    width: 98%;  
+    
+}
+.fdclass1{
+    padding-left: 35px;
+    padding-right: 30px;
+    font-size: large;
+    font-weight: 100;
+}
+#idforlabel{
+    margin-top: 30px;
+}
+.fdinputclass{
+    font-size: larger;
+    width: 200px;
+    height: 25px;
+}
+#idforbutton{
+    margin-top: 35px;
+    margin-left: 150px;
+}
+#cancelbutton{
+    background-color: crimson;
+    height: 30px;
+    color: white;
+    border-radius: 4%;
+    width: 70px;
+    margin-left: 20px;
+}
+
+#savebutton{
+    background-color:green;
+    height: 30px;
+    color: white;
+    border-radius: 4%;
+    width: 70px;
+    
+}
+#optionsid{
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(173, 209, 212);
+    height: 100px;
+    padding: 50px;
+}
+
+#fgbottom{
+    background-color: rgb(170, 169, 169);
+    height: 40px;
+    width: 80%;
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 10px;
+}
