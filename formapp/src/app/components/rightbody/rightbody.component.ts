@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Textfield } from 'src/app/models/Text';
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {ListItem} from 'src/app/models/ListItem';
+
 import { Service } from 'src/app/service/service';
 @Component({
   selector: 'app-rightbody',
@@ -10,18 +10,23 @@ import { Service } from 'src/app/service/service';
 })
 export class RightbodyComponent implements OnInit {
 
-  // text: Text = {
-  //   fgid : 1,
-  //   name: "first name",
-  //   min_length: 2,
-  //   max_length: 30,
-  //   is_required: 0
+
+  listItems: ListItem[] = [];
+  liststatus: boolean = false;
+//   text: Text = {
+//     fgid : 1,
+//     name: "first name",
+//     min_length: 2,
+//     max_length: 30,
+//     is_required: 0
+// >>>>>>> 620a553a63155a0795e1bd59f7d44e9d86e2907e
 
   // };
   text:Textfield=new Textfield();
   constructor(private service:Service) { }
 
   ngOnInit(): void {
+    this.listItems.push(new ListItem("",""));
   }
   onCheckboxChange(): void {
     this.text.is_required = this.text.is_required+1;
@@ -34,5 +39,17 @@ export class RightbodyComponent implements OnInit {
     this.text.max_length = 0;
     this.text.min_length = 0;
     this.text.name = "";
+  }
+  onOptionsSelected(val: string){
+    if(val=="chechboxlist")
+    {
+      this.liststatus=true;
+    }
+  }
+  addListItem(){
+    this.listItems.push(new ListItem("",""));
+  }
+  removeListItem(){
+    this.listItems.pop();
   }
 }
