@@ -74,7 +74,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	@Transactional
-	public JSONObject getfg(int i) {
+	public String getfg(int i) {
 		Session currentSession1 = entityManager.unwrap(Session.class);
 		long id = i;
 		FieldGroup fg = currentSession1.get(FieldGroup.class, id);
@@ -85,8 +85,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	    for(Text t: FTtext) {
 	    	JSONObject obj = new JSONObject();
 	    	try {
-	    		obj.put("id", t.getId());
-		    	obj.put("value", t.getValue());
+	    		obj.put("fgid", t.getId());
+		    	obj.put("name", t.getValue());
 				obj.put("is_required", t.getIs_required());
 				obj.put("max_length", t.getMax_length());
 				obj.put("min_length", t.getMin_length());
@@ -97,82 +97,84 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			}
 	    }
 //	    System.out.println(res);
-	    JSONArray cblarr = new JSONArray();
-	    List<CheckBoxList> cbl = fg.getFTcheckboxlist();
-	    
-	    
-	    try {
-	    	for(CheckBoxList cb: cbl) {
-		    	JSONObject cbli = new JSONObject();
-		    	List<BoxItem> bi = cb.getBoxItems();
-		    	JSONObject valobj = new JSONObject();
-			    	for(BoxItem b: bi) {
-			    		valobj.put(b.getValue(), b.getText());
-			    	}
-			    cbli.put("id", cb.getId());
-		    	cbli.put("name", cb.getValue());
-		    	cbli.put("is_required", cb.getIs_required());
-		    	cbli.put("val", valobj);
-		    	cblarr.put(cbli);
-		    }
-	    	
-	    }
-	    catch(Exception e) {
-	    	
-	    }
-
-	    
-	    JSONArray numarr = new JSONArray();
-	    List<Num> numl = fg.getFTNum();
-	    
-	    for(Num n: numl) {
-	    	JSONObject obj = new JSONObject();
-	    	try {
-	    		obj.put("id", n.getId());
-		    	obj.put("value", n.getValue());
-				obj.put("is_required", n.getIs_required());
-				obj.put("max_length", n.getMax_length());
-				obj.put("min_length", n.getMin_length());
-				numarr.put(obj);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
-
-	    JSONArray passwordarr = new JSONArray();
-	    List<Password> passl = fg.getFTPassword();
-	    
-	    for(Password n: passl) {
-	    	JSONObject obj = new JSONObject();
-	    	try {
-	    		obj.put("id", n.getId());
-		    	obj.put("value", n.getValue());
-				obj.put("is_required", n.getIs_required());
-				obj.put("max_length", n.getMax_length());
-				obj.put("min_length", n.getMin_length());
-				passwordarr.put(obj);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
-	    
-	    
-	    
-	    try {
-			res.put("text", jsonArray);
-		    res.put("checkboxlist", cblarr);
-		    res.put("number", numarr);
-		    res.put("password", passwordarr);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    return res;
+//	    JSONArray cblarr = new JSONArray();
+//	    List<CheckBoxList> cbl = fg.getFTcheckboxlist();
+//	    
+//	    
+//	    try {
+//	    	for(CheckBoxList cb: cbl) {
+//		    	JSONObject cbli = new JSONObject();
+//		    	List<BoxItem> bi = cb.getBoxItems();
+//		    	JSONObject valobj = new JSONObject();
+//			    	for(BoxItem b: bi) {
+//			    		valobj.put(b.getValue(), b.getText());
+//			    	}
+//			    cbli.put("id", cb.getId());
+//		    	cbli.put("name", cb.getValue());
+//		    	cbli.put("is_required", cb.getIs_required());
+//		    	cbli.put("val", valobj);
+//		    	cblarr.put(cbli);
+//		    }
+//	    	
+//	    }
+//	    catch(Exception e) {
+//	    	
+//	    }
+//
+//	    
+//	    JSONArray numarr = new JSONArray();
+//	    List<Num> numl = fg.getFTNum();
+//	    
+//	    for(Num n: numl) {
+//	    	JSONObject obj = new JSONObject();
+//	    	try {
+//	    		obj.put("id", n.getId());
+//		    	obj.put("value", n.getValue());
+//				obj.put("is_required", n.getIs_required());
+//				obj.put("max_length", n.getMax_length());
+//				obj.put("min_length", n.getMin_length());
+//				numarr.put(obj);
+//			} catch (JSONException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	    }
+//
+//	    JSONArray passwordarr = new JSONArray();
+//	    List<Password> passl = fg.getFTPassword();
+//	    
+//	    for(Password n: passl) {
+//	    	JSONObject obj = new JSONObject();
+//	    	try {
+//	    		obj.put("id", n.getId());
+//		    	obj.put("value", n.getValue());
+//				obj.put("is_required", n.getIs_required());
+//				obj.put("max_length", n.getMax_length());
+//				obj.put("min_length", n.getMin_length());
+//				passwordarr.put(obj);
+//			} catch (JSONException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	    }
+//	    
+//	    
+//	    
+//	    try {
+//			res.put("text", jsonArray);
+////		    res.put("checkboxlist", cblarr);
+////		    res.put("number", numarr);
+////		    res.put("password", passwordarr);
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	    return res;
 //	    ObjectMapper mapper = new ObjectMapper();
 	    
 //	    System.out.println(responseDetailsJson);
+	    
+	    return jsonArray.toString();
 	}
 
 	@Override
@@ -370,6 +372,33 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.printStackTrace();
 		}
 	    return res;
+	}
+
+	@Override
+	public String getfgs() {
+		Session currentSession = entityManager.unwrap(Session.class);
+		Query<FieldGroup> theQuery = currentSession.createQuery("from com.greatlearning.springrest.entity.FieldGroup");
+		
+		List<FieldGroup> items = theQuery.getResultList();
+		JSONArray jsonArray = new JSONArray();
+		try {
+			for(FieldGroup i: items) {
+				JSONObject obj = new JSONObject();
+		    	try {
+			    	obj.put("id", i.getId());
+			    	obj.put("name", i.getName());
+			    	jsonArray.put(obj);
+		    	}
+		    	catch(Exception e )
+		    	{
+		    		
+		    	}
+			}
+		}
+		catch (Exception e) {
+			
+		}
+		return jsonArray.toString();
 	}
 	
 

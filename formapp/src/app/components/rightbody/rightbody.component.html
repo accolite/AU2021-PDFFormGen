@@ -82,9 +82,6 @@
                      <label for="isreq"  class="fdclass1"><b>Required</b></label>
                      <input type="checkbox" name="isreq" class="fdinputclass" (change)="onCheckboxChange()">
                     </div>
-                    <div id="idforlabel">
-                      <button>Add</button>
-                    </div>
                    </form>
                 </div>
               </mat-tab>
@@ -93,7 +90,24 @@
     </div>
 
     <div>
-        <h1 id="fgbottom">FieldGroups</h1>
+       <button (click)="showfgs()">Show FieldGroups/ hide FieldGroups</button>
+      <div id="fgbottom" *ngIf="sfg">
+        <div *ngFor="let i of fgs">
+          <button > {{i.id}}) {{i.name}} </button >  <button (click)="getfg(i.id, i.name)">expand</button>
+        </div>
+      </div>
+      <div>
+        <h2> deatails of feildgroup <b>{{fieldtitle}}</b>  </h2>
+        <table>
+          <li *ngFor="let i of texts">
+            <p> <b>label:- </b> {{i.name}}</p>
+            <p> <b>is required:- </b> {{i.is_required}}</p>
+            <p> <b> max length:-</b> {{i.max_length}}</p>
+            <p> <b>min length:-</b>  {{i.min_length}}</p>
+            <button >+</button>
+          </li>
+        </table>
+      </div>
     </div>
 
 </div>

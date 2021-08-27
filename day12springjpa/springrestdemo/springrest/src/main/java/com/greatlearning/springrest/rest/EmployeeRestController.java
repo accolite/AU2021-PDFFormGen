@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,8 @@ import com.greatlearning.springrest.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = { "http://localhost:4200" })
+
 public class EmployeeRestController {
 	
 	@Autowired
@@ -72,7 +75,7 @@ public class EmployeeRestController {
 	
 	@PostMapping("/getfg")
 	public String getfg(@RequestBody LinkedHashMap mp) {
-		return employeeDAO.getfg((int)mp.get("fgid")).toString();
+		return employeeDAO.getfg((int)mp.get("fgid"));
 	}
 	
 	
@@ -123,6 +126,13 @@ public class EmployeeRestController {
 	@PostMapping("/getform")
 	public String getform(@RequestBody LinkedHashMap mp) {
 		return employeeDAO.getform((int)mp.get("formid")).toString();
+	}
+	
+	@GetMapping("/getfgs")
+	public String getfgs()
+	{
+		System.out.println("coming");
+		return employeeDAO.getfgs();
 	}
 	
 	

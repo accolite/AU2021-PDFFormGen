@@ -15,7 +15,7 @@ public interface EmployeeDAO {
 
 	public void addFieldGroup(String string);
 
-	public JSONObject getfg(int i);
+	public String getfg(int i);
 	
 	
 	public void addCheckBox(int fgid,String name,int is_required,String value);
@@ -35,5 +35,7 @@ public interface EmployeeDAO {
 	public void createform(String string, List<Integer> textl, List<Integer> checkboxlistl, List<Integer> passwordl);
 
 	public JSONObject getform(int i);
+
+	public String getfgs();
 	
 }
