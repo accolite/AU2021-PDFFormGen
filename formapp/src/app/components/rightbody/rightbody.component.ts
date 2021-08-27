@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Textfield } from 'src/app/models/Text';
 import {ListItem} from 'src/app/models/ListItem';
-
+import {FG} from 'src/app/models/FG';
+import { FgId } from 'src/app/models/FgId';
 import { Service } from 'src/app/service/service';
 @Component({
   selector: 'app-rightbody',
@@ -9,6 +10,12 @@ import { Service } from 'src/app/service/service';
   styleUrls: ['./rightbody.component.css']
 })
 export class RightbodyComponent implements OnInit {
+<<<<<<< HEAD
+=======
+
+  sfg: boolean = false;
+  fgs: FG[] = [];
+>>>>>>> 7a1d61ebcbd436740075ec145094ee91f929f505
   listItems: ListItem[] = [];
   liststatus: boolean = false;
 //   text: Text = {
@@ -20,11 +27,19 @@ export class RightbodyComponent implements OnInit {
 // >>>>>>> 620a553a63155a0795e1bd59f7d44e9d86e2907e
 
   // };
-  text:Textfield=new Textfield();
+  text:Textfield=new Textfield(1,"",1,0,0);
   constructor(private service:Service) { }
 
   ngOnInit(): void {
     this.listItems.push(new ListItem("",""));
+    
+    this.service.getfgs().subscribe((response)=>{
+      this.fgs = response;
+      console.log(response);
+    },
+    (error)=>{
+      console.log(error);
+    });
   }
   onCheckboxChange(): void {
     this.text.is_required = this.text.is_required+1;
@@ -43,11 +58,33 @@ export class RightbodyComponent implements OnInit {
     {
       this.liststatus=true;
     }
+    else
+    {
+      this.liststatus=false;
+    }
   }
   addListItem(){
     this.listItems.push(new ListItem("",""));
   }
   removeListItem(){
     this.listItems.pop();
+  }
+  showfgs(){
+    this.sfg = !this.sfg;
+  }
+  texts: Textfield[] = [];
+  id: FgId = new FgId(0);
+  fieldtitle: string = "";
+  getfg(id: number, name: string){
+    this.fieldtitle = name;
+    console.log(id);
+    this.id.fgid = id;
+    this.service.getfg(this.id).subscribe((response)=>{
+      this.texts = response;
+      console.log(response);
+    },
+    (error)=>{
+      console.log(error);
+    });
   }
 }

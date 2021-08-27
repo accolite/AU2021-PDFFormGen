@@ -33,10 +33,11 @@
                  <div id="idforlabel">
                     <label for="fdgroups" class="fdclass1"><b>FieldGroups :</b></label>
                     <select name="fdgroups" class="fdinputclass">
-                        <option value="fd1">FieldGroup-1</option>
+                        <option *ngFor="let i of fgs" value="i.id"> {{i.name}} </option>
+                        <!-- <option value="fd1">FieldGroup-1</option>
                         <option value="fd2">FieldGroup-2</option>
                         <option value="fd3">FieldGroup-3</option>
-                        <option value="fd4">FieldGroup-4</option>
+                        <option value="fd4">FieldGroup-4</option> -->
                     </select>
                  </div>
 
@@ -82,9 +83,6 @@
                      <label for="isreq"  class="fdclass1"><b>Required</b></label>
                      <input type="checkbox" name="isreq" class="fdinputclass" (change)="onCheckboxChange()">
                     </div>
-                    <div id="idforlabel">
-                      <button>Add</button>
-                    </div>
                    </form>
                 </div>
               </mat-tab>
@@ -93,7 +91,24 @@
     </div>
 
     <div>
-        <h1 id="fgbottom">FieldGroups</h1>
+       <button id="idforbutton" (click)="showfgs()">Show FieldGroups/ hide FieldGroups</button>
+      <div id="fgbottom" *ngIf="sfg">
+        <div *ngFor="let i of fgs">
+          <button > {{i.id}}) {{i.name}} </button >  <button (click)="getfg(i.id, i.name)">expand</button>
+        </div>
+        <h2> details of field group <b>{{fieldtitle}}</b>  </h2>
+      </div>
+      <div>
+        <table>
+          <li *ngFor="let i of texts">
+            <p> <b>label:- </b> {{i.name}}</p>
+            <p> <b>is required:- </b> {{i.is_required}}</p>
+            <p> <b> max length:-</b> {{i.max_length}}</p>
+            <p> <b>min length:-</b>  {{i.min_length}}</p>
+            <button>+</button>
+          </li>
+        </table>
+      </div>
     </div>
 
 </div>
