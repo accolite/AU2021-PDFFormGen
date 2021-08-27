@@ -29,7 +29,14 @@ export class RightbodyComponent implements OnInit {
 
   ngOnInit(): void {
     this.listItems.push(new ListItem("",""));
-
+    
+    this.service.getfgs().subscribe((response)=>{
+      this.fgs = response;
+      console.log(response);
+    },
+    (error)=>{
+      console.log(error);
+    });
   }
   onCheckboxChange(): void {
     this.text.is_required = this.text.is_required+1;
@@ -61,13 +68,6 @@ export class RightbodyComponent implements OnInit {
   }
   showfgs(){
     this.sfg = !this.sfg;
-    this.service.getfgs().subscribe((response)=>{
-      this.fgs = response;
-      console.log(response);
-    },
-    (error)=>{
-      console.log(error);
-    });
   }
   texts: Textfield[] = [];
   id: FgId = new FgId(0);
