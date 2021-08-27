@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Text } from 'src/app/models/Text';
+import {ListItem} from 'src/app/models/ListItem';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 @Component({
@@ -9,6 +10,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class RightbodyComponent implements OnInit {
 
+  listItems: ListItem[] = [];
+  liststatus: boolean = false;
   text: Text = {
     fgid : 1,
     name: "first name",
@@ -20,6 +23,7 @@ export class RightbodyComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.listItems.push(new ListItem("",""));
   }
   onCheckboxChange(): void {
     this.text.is_required = this.text.is_required+1;
@@ -32,5 +36,17 @@ export class RightbodyComponent implements OnInit {
     this.text.max_length = 0;
     this.text.min_length = 0;
     this.text.name = "";
+  }
+  onOptionsSelected(val: string){
+    if(val=="chechboxlist")
+    {
+      this.liststatus=true;
+    }
+  }
+  addListItem(){
+    this.listItems.push(new ListItem("",""));
+  }
+  removeListItem(){
+    this.listItems.pop();
   }
 }

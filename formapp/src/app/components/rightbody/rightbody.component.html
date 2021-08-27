@@ -6,13 +6,14 @@
     
     <div id="selectdivforf">
         <label for="field" id="labelforselect" ><b>Field Type</b></label>
-        <select name="field" id="options">
+        <select name="field" id="options" #mySelect
+        (change)='onOptionsSelected(mySelect.value)'>
           <option value="text">Text</option>
           <option value="email">Email</option>
           <option value="number">Number</option>
           <option value="password">Password</option>
           <option value="textarea">Textarea</option>
-          <option value="chechbox">Chechbox</option>
+          <option value="chechboxlist">Chechbox List</option>
           <option value="date">Date</option>
         </select>
     </div>
@@ -49,8 +50,21 @@
         
         
             <mat-tab label="Options">
-              <div class="fdclass">
-                <h1 id="optionsid">No Options Available</h1>
+              <div id="optionsid" class="fdclass">
+                <h1 *ngIf="!liststatus" >No Options Available</h1>
+                <div *ngIf="liststatus">
+                  <ul *ngFor="let lis of listItems">
+                    <li>
+                      <label class="fdclass1" for="val">value</label>
+                      <input class="fdinputclass" type="text" id="val" [(ngModel)]="lis.val">
+                      <br>
+                      <label class="fdclass1" for="text">text</label>
+                      <input class="fdinputclass" type="text" id="text" [(ngModel)]="lis.text">
+                    </li>
+                  </ul>
+                  <button id="idforbutton" (click)="addListItem()">Add element</button>
+                  <button id="idforbutton" (click)="removeListItem()">Remove element</button>
+                </div>
               </div>
             </mat-tab>
             <mat-tab label="Validation">
