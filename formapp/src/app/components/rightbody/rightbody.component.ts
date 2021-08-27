@@ -9,8 +9,6 @@ import { Service } from 'src/app/service/service';
   styleUrls: ['./rightbody.component.css']
 })
 export class RightbodyComponent implements OnInit {
-
-
   listItems: ListItem[] = [];
   liststatus: boolean = false;
 //   text: Text = {
