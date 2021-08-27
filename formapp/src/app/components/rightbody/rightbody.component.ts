@@ -42,6 +42,10 @@ export class RightbodyComponent implements OnInit {
     {
       this.liststatus=true;
     }
+    else
+    {
+      this.liststatus=false;
+    }
   }
   addListItem(){
     this.listItems.push(new ListItem("",""));
