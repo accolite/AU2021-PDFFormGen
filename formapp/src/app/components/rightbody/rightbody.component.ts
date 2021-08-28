@@ -13,6 +13,7 @@ export class RightbodyComponent implements OnInit {
 
 
   sfg: boolean = false;
+  showlist:boolean=false;
   fgs: FG[] = [];
   listItems: ListItem[] = [];
   liststatus: boolean = false;
@@ -70,12 +71,16 @@ export class RightbodyComponent implements OnInit {
   showfgs(){
     this.sfg = !this.sfg;
   }
+  closefgs(){
+    this.showlist=false;
+  }
   texts: Textfield[] = [];
   id: FgId = new FgId(0);
   fieldtitle: string = "";
   getfg(id: number, name: string){
     this.fieldtitle = name;
     // console.log(id);
+    this.showlist=true;
     this.id.fgid = id;
     this.service.getfg(this.id).subscribe((response)=>{
       this.texts = response;

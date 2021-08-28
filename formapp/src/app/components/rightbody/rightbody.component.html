@@ -91,14 +91,14 @@
     </div>
 
     <div>
-       <button id="idforbutton" (click)="showfgs()" class="showhideb"> Show/Hide FieldGroups  ▼ </button>
+       <button  (click)="showfgs()" class="showhideb"> Show/Hide FieldGroups  ▼ </button>
       <div id="fgbottom" *ngIf="sfg">
         <div *ngFor="let i of fgs">
-          <button class="fdb1"> {{i.id}}) {{i.name}} </button >  <button (click)="getfg(i.id, i.name)" class="fdb2"> ▼ </button>
+          <button class="fdb1"> {{i.id}}) {{i.name}} </button >  <button (click)="getfg(i.id, i.name)" class="fdb2"> ▼ </button><button (click)="closefgs()"class="fdb2"> ▲ </button>
         </div>
         <h2> Details of field group :<b>{{fieldtitle}}</b>  </h2>
       </div>
-      <div id="listoffieldsinfg">
+      <div *ngIf="showlist" id="listoffieldsinfg">
         <table>
           <li *ngFor="let i of texts" class="listf">
            <div class="divforlistoff">
