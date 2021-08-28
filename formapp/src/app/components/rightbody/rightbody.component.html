@@ -91,21 +91,23 @@
     </div>
 
     <div>
-       <button id="idforbutton" (click)="showfgs()">Show FieldGroups/ hide FieldGroups</button>
+       <button id="idforbutton" (click)="showfgs()" class="showhideb"> Show/Hide FieldGroups  ▼ </button>
       <div id="fgbottom" *ngIf="sfg">
         <div *ngFor="let i of fgs">
-          <button > {{i.id}}) {{i.name}} </button >  <button (click)="getfg(i.id, i.name)">expand</button>
+          <button class="fdb1"> {{i.id}}) {{i.name}} </button >  <button (click)="getfg(i.id, i.name)" class="fdb2"> ▼ </button>
         </div>
-        <h2> details of field group <b>{{fieldtitle}}</b>  </h2>
+        <h2> Details of field group :<b>{{fieldtitle}}</b>  </h2>
       </div>
-      <div>
+      <div id="listoffieldsinfg">
         <table>
-          <li *ngFor="let i of texts">
+          <li *ngFor="let i of texts" class="listf">
+           <div class="divforlistoff">
             <p> <b>label:- </b> {{i.name}}</p>
             <p> <b>is required:- </b> {{i.is_required}}</p>
             <p> <b> max length:-</b> {{i.max_length}}</p>
             <p> <b>min length:-</b>  {{i.min_length}}</p>
-            <button>+</button>
+            <button id="addb">Add</button>
+           </div>
           </li>
         </table>
       </div>

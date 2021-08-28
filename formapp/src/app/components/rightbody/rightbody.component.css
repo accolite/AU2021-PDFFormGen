@@ -47,10 +47,10 @@
     width: 200px;
     height: 25px;
 }
-#idforbutton{
+/* #idforbutton{
     margin-top: 35px;
     margin-left: 150px;
-}
+} */
 #cancelbutton{
     background-color: crimson;
     height: 30px;
@@ -79,9 +79,52 @@
 
 #fgbottom{
     background-color: rgb(170, 169, 169);
-    height: 40px;
+    height: 60px;
     width: 80%;
     margin-top: 20px;
     text-align: center;
     padding-top: 10px;
+}
+
+.listf{
+    margin-left: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+   
+}
+.fdb1{
+  background-color: rgb(114, 114, 185);
+  height: 25px;
+  
+}
+.fdb2{
+    background-color: rgb(114, 114, 185);
+    height: 25px;
+    margin-left: 15px;
+}
+
+.showhideb{
+    height: 40px;
+    width:80%;
+    background-color:rgb(63,81,181);
+    color: rgb(206, 206, 206);
+}
+
+.divforlistoff{
+    padding-top: 5px;
+    height: 190px;
+    width: 300px;
+    padding-left: 60px;
+    background-color: rgb(216, 148, 102);
+    margin-left: 0%;
+}
+#addb{
+    margin-left: 30px;
+    height:25px;
+    width: 80px;
+    align-items: center;
+    background-color: rgb(33, 197, 142);
+}
+#listoffieldsinfg{
+    background-color: rgb(48, 48, 48);
 }

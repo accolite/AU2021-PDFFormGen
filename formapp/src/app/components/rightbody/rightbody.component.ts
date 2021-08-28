@@ -10,12 +10,10 @@ import { Service } from 'src/app/service/service';
   styleUrls: ['./rightbody.component.css']
 })
 export class RightbodyComponent implements OnInit {
-<<<<<<< HEAD
-=======
+
 
   sfg: boolean = false;
   fgs: FG[] = [];
->>>>>>> 7a1d61ebcbd436740075ec145094ee91f929f505
   listItems: ListItem[] = [];
   liststatus: boolean = false;
 //   text: Text = {
@@ -35,7 +33,7 @@ export class RightbodyComponent implements OnInit {
     
     this.service.getfgs().subscribe((response)=>{
       this.fgs = response;
-      console.log(response);
+      // console.log(response);
     },
     (error)=>{
       console.log(error);
@@ -77,11 +75,11 @@ export class RightbodyComponent implements OnInit {
   fieldtitle: string = "";
   getfg(id: number, name: string){
     this.fieldtitle = name;
-    console.log(id);
+    // console.log(id);
     this.id.fgid = id;
     this.service.getfg(this.id).subscribe((response)=>{
       this.texts = response;
-      console.log(response);
+      // console.log(response);
     },
     (error)=>{
       console.log(error);
